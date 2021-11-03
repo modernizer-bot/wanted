@@ -1,9 +1,10 @@
 import styled from "styled-components"
-import { TextMiddle, PageWrap } from "../../components/common/styled";
+import { PageWrap } from "../../components/common/styled";
 import Header from "../../components/common/header";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Footer from '../../components/common/footer'
 
 
 const HomePage = () => {
@@ -28,14 +29,11 @@ const HomePage = () => {
     return (
         <PageWrap>
             <Header page="home" />
-            <IndexText>항상 {user.name}님을 응원합니다 !</IndexText>
+            <Footer />
         </PageWrap>
     )
 }
 
-const IndexText = styled(TextMiddle)`
-    font-size:30px;
-    font-weight:600;
-`;
+
 
 export default HomePage

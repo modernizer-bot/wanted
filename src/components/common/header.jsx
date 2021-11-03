@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {MdKeyboardArrowRight} from 'react-icons/md';
 import DropDownMenuItem from './dropDownMenuItem'
 
 const Header = ({ page }) => {
-  const backGround = document.getElementById('popUp');
+  let drop;
+  let modal;
+  setTimeout( () => {
+    drop = document.getElementById('dropdown');
+    modal = document.getElementById('modal');
+  }, 50)
+  const mouseOver = () => {
+    drop.style.height='100%';
+    modal.style.display='block';
+  }
+  const mouseOut = () => {
+    drop.style.height='0';
+    modal.style.display='none';
+  }
   const menuTop = [
     {
       title:'개발',
@@ -58,14 +70,16 @@ const Header = ({ page }) => {
     },
 
   ]
-  //
+
     return (
       <Headers>
         <HeaderBox>
           <HeaderCenterBox>
             <LogoBox><p>wanted</p></LogoBox>
             <LinkListBox>
-              <LinkList className='firstChild'><Link to=''>탐색</Link></LinkList>
+              <LinkList onMouseOver={() => mouseOver()} onMouseOut={() => mouseOut()}>
+                <Link to=''>탐색</Link>
+              </LinkList>
               <LinkList><Link to=''>커리어 성장</Link></LinkList>
               <LinkList><Link to=''>직군별 연봉</Link></LinkList>
               <LinkList><Link to=''>이력서</Link></LinkList>
@@ -91,7 +105,7 @@ const Header = ({ page }) => {
             </FlexRightBox>
           </HeaderCenterBox>
         </HeaderBox>
-        <DropDownMenuBox className='dropdown'>
+        <DropDownMenuBox id='dropdown' onMouseOver={() => mouseOver()} onMouseOut={() => mouseOut()}>
           <DropDownMenu>
             <MenuListBox>
               {menuTop.map((v,i) =>
@@ -104,8 +118,8 @@ const Header = ({ page }) => {
               )}
             </MenuListBox>
           </DropDownMenu>
-          <PopUp id='popUp'/>
         </DropDownMenuBox>
+        <Modal id='modal' />
       </Headers>
     )
 }
@@ -163,7 +177,7 @@ const LinkList = styled.div`
   font-weight: 600;
   padding: 15px;
   &:hover{
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid #999;
   }
 `
 
@@ -217,10 +231,10 @@ const CompanyService = styled.div`
 const DropDownMenuBox = styled.div`
   overflow: hidden;
   width: 100%;
-  display: flex;
   justify-content: center;
   background: #fff;
-  
+  display: flex;
+  height: 0;
 `
 
 const DropDownMenu = styled.div`
@@ -239,11 +253,14 @@ const MenuListBox = styled.div`
   display: flex;
   flex-direction: row;
 `
-const PopUp = styled.div`
-  position: absolute;
-  z-index: -1;
+const Modal = styled.div`
+  display: none;
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(51,51,51, .4);
+  top: 50px;
+  z-index: -1;
+  background: rgba(0,0,0,.4);
+  transition: .5s;
 `
 export default Header
