@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {MdOutlineArrowDropDown} from 'react-icons/md';
 
 const Footer = () => {
   return (
@@ -49,7 +50,16 @@ const Footer = () => {
               299-86-00021 | 02-539-7118<br />© Wantedlab, Inc.</p>
         </TextBox>
         <LanguageBox>
-
+          <LanguageBtnBox>
+            <LanguageBtn>
+              <option value="KR">한국 (한국어) </option>
+              <option value="JP">日本 (日本語)</option>
+              <option value="TW">臺灣 (中文)</option>
+              <option value="WW">Worldwide (English)</option>
+              <option value="SG">Singapore (English)</option>
+            </LanguageBtn>
+            <MdOutlineArrowDropDown className='icon'/>
+          </LanguageBtnBox>
         </LanguageBox>
       </CompanyBox>
     </FooterBox>
@@ -111,6 +121,7 @@ const Icons = styled.img`
 const CompanyBox = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 25px 0 0;
 `
 const TextBox = styled.div`
   font-size: 12px;
@@ -124,7 +135,36 @@ const TextBox = styled.div`
 const LanguageBox = styled.div`
 `
 const LanguageBtnBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  background: #f2f4f7;
+  height: 40px;
+  border-radius: 5px;
+  & .icon {
+    font-size: 30px;
+    color: #717171;
+  }
 `
-const LanguageBtn = styled.input`
+const LanguageBtn = styled.select`
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  line-height: 2.1;
+  color: #717171;
+  padding: 0 45px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-weight: 500;
+  background: url("https://s3.ap-northeast-2.amazonaws.com/wanted-public/ico_KR.svg") no-repeat 20px;
+  background-size: 24px;
+`
+const LanguageImg = styled.img`
+  width: 24px;
+  height: 17px;
 `
 export default Footer;
