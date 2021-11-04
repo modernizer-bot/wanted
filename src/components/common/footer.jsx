@@ -122,6 +122,8 @@ const CompanyBox = styled.div`
   display: flex;
   flex-direction: row;
   padding: 25px 0 0;
+  width: 100%;
+  max-width: 1060px;
 `
 const TextBox = styled.div`
   font-size: 12px;

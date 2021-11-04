@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Footer from '../../components/common/footer'
+import MainPage from './mainPage'
 
 
 const HomePage = () => {
@@ -29,6 +30,7 @@ const HomePage = () => {
     return (
         <PageWrap>
             <Header page="home" />
+            <MainPage />
             <Footer />
         </PageWrap>
     )
