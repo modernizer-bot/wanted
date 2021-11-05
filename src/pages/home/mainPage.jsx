@@ -32,15 +32,9 @@ const MainPage = () => {
           <MainPageBtn>지금 시작하기</MainPageBtn>
         </MainPageTextBox>
         </MainPageBackground>
-      <MainPageSections props={sections[0]}/>
-      <SectionLineBox>
-        <SectionLine src="https://static.wanted.co.kr/images/newintro/dot.png" alt="line" />
-      </SectionLineBox>
-      <MainPageSections props={sections[1]} />
-      <SectionLineBox>
-        <SectionLine src="https://static.wanted.co.kr/images/newintro/dot.png" alt="line" />
-      </SectionLineBox>
-      <MainPageSections props={sections[2]} />
+      <MainPageSections props={sections[0]} line={false}/>
+      <MainPageSections props={sections[1]} line={true}/>
+      <MainPageSections props={sections[2]} line={true}/>
       <StartWantedBox>
         <StartWantedTextBox>
           <StartWantedTitle>커리어 성장과 행복을 위한 여정,<br/>지금 원티드에서 시작하세요.</StartWantedTitle>
@@ -103,15 +97,7 @@ const MainPageBtn = styled.button`
   line-height: 17px;
   border: 0;
 `
-const SectionLineBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-const SectionLine = styled.img`
-  width: 4px;
-`
+
 const StartWantedBox = styled.div`
   position: relative;
   display: -webkit-box;
