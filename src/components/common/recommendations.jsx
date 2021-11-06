@@ -1,8 +1,29 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 
-const Recommendations = () => {
-  return;
+const Recommendations = ({props}) => {
+  return(
+    <RecommendationLi>
+      <RecommendationLink to={'/'}>
+        <RecommendationUp>
+          <RecommendationImg className='backImg' style={{background:`url(${props.img})`, backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'}}/>
+        </RecommendationUp>
+        <RecommendationTextBox>
+          <RecommendationSubImg style={{background:`url(${props.subImg})`, backgroundColor: '#f2f2f2',
+            backgroundPosition: '50%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'}}/>
+          <RecommendationTitle>
+            {props.title}
+          </RecommendationTitle>
+          <RecommendationText>
+            {props.text}
+          </RecommendationText>
+        </RecommendationTextBox>
+      </RecommendationLink>
+    </RecommendationLi>
+  );
 }
 
 const RecommendationLi = styled.li`
@@ -36,7 +57,7 @@ const RecommendationImg = styled.div`
   background-size: cover;
   transition: all .5s ease-in-out;
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
-  background: #f2f2f2 url("https://static.wanted.co.kr/images/company/455/mnes3mjmx4m7jmhk__1080_790.jpg") no-repeat 50% 50%;
+  background: #f2f2f2 no-repeat 50% 50%;
   background-size: 100% 100%;
   overflow: hidden;
 `
@@ -55,13 +76,8 @@ const RecommendationSubImg = styled.div`
   left: 16px;
   width: 50px;
   height: 50px;
-  background-color: #f2f2f2;
-  background-position: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
   z-index: 0;
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
-  background-image: url('https://static.wanted.co.kr/images/wdes/0_5.b9eea0fb.jpg');
 `
 const RecommendationTitle = styled.h1`
   font-size: 16px;
