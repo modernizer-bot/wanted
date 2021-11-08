@@ -6,6 +6,7 @@ import {FaBookmark} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import Recommendations from '../../components/common/recommendations'
 import CompanysItem from '../../components/common/companysItem'
+import CompanysScroll from '../../components/common/companysScroll'
 
 const Exploring = () => {
   const [toggle, setToggle] = useState(false);
@@ -46,6 +47,7 @@ const Exploring = () => {
     <PageWrap>
       <Header />
       <CompanyListBox>
+        <CompanysScroll />
         <CompanyListCenter>
           <CompanyFilterBox>
             <FilterLiftBox>
@@ -138,6 +140,11 @@ const TagFilterBtn = styled.button`
   border-radius: 5px;
   border: 1px solid #ececec;
   position: relative;
+  background: #fff;
+  cursor: pointer;
+  &:hover{
+    background: #f9f9f9;
+  }
 `
 const FilterBtn = styled.button`
   -webkit-box-align: center;
@@ -150,6 +157,11 @@ const FilterBtn = styled.button`
   border: 1px solid #ececec;
   position: relative;
   margin-left: 10px;
+  background: #fff;
+  cursor: pointer;
+  &:hover{
+    background: #f9f9f9;
+  }
 `
 const ArrIcon = styled.span`
   content: "";
@@ -238,6 +250,7 @@ const BookMarkBox = styled.div`
   align-items: center;
   wkdth:100%;
   color: rgb(51, 102, 255);
+  
 `
 const MarkTextBox = styled.div`
   font-size: 15px;

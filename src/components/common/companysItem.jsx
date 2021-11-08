@@ -1,15 +1,28 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import {AiTwotoneHeart} from 'react-icons/ai';
+import {useState} from 'react'
 
 const CompanysItem = () => {
+  const [like, setLike] = useState(false);
+
   return (
     <CompanyItemBox>
       <CompanyFlexBox>
-        <CompanyLink to={'/'}>
-          <CompanyItemHeader />
+        <CompanyLink to={'/exploring'}>
+          <CompanyItemHeader>
+            <LikeBtnBox  onClick={() => setLike(!like)} style={{color:`${like ? 'red' : 'blue'}`}}>
+              <AiTwotoneHeart className={'btnIcon'}/>0
+            </LikeBtnBox>
+          </CompanyItemHeader>
           <CompanyItemFooter>
             <CompanyTitle>네이티브 모듈 개발 (React Native - iOS, Android)</CompanyTitle>
             <CompanyText>키클롭스</CompanyText>
+            <ResponseRateBox>
+              <ResponseRate>
+                응답률 메우높음
+              </ResponseRate>
+            </ResponseRateBox>
             <CompanySubText>서울·한국</CompanySubText>
             <CompanyMoney>채용보상금 1,000,000원</CompanyMoney>
           </CompanyItemFooter>
@@ -36,6 +49,7 @@ const CompanyLink = styled(Link)`
   height: 100%;
 `
 const CompanyItemHeader = styled.div`
+  z-index: -1;
   padding-bottom: 75%;
   position: relative;
   background-size: cover;
@@ -70,9 +84,63 @@ const CompanyText = styled.div`
   white-space: nowrap;
 `
 const CompanySubText = styled.div`
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-top: 6px;
+  color: #999;
 `
 const CompanyMoney = styled.div`
+  margin-top: 6px;
+  color: #666;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
-
-
+const ResponseRateBox = styled.div`
+`
+const ResponseRate = styled.div`
+  border-radius: 2px;
+  background-color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  height: 19px;
+  line-height: 19px;
+  margin-top: 4px;
+  padding: 0 5px;
+  border: 1px solid #00aead;
+  color: #00aead;
+`
+const LikeBtnBox = styled.button`
+  z-index: 3;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  top: 10px;
+  width: 60px;
+  height: 30px;
+  border-radius: 3px;
+  position: absolute;
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  display: flex;
+  border: none;
+  & .btnIcon{
+    margin-right: 5px;
+    color: hsla(0,0%,100%,.3);
+  }
+`
 export default CompanysItem;

@@ -39,7 +39,7 @@ const MenuItem = styled.div`
   display: flex;
   flex-direction: column;
   width: 16.666%;
-  height: 270px;
+  height: 100%;
   padding: 40px 20px 0 0;
   text-align: left;
   & .icon {
@@ -72,7 +72,7 @@ const MenuItemText = styled.div`
   position: relative;
   font-size: 13px;
   color: #999;
-  padding: 5px 20px 5px 0;
+  padding: 3px 20px 3px 0;
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
