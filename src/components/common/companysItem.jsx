@@ -5,15 +5,14 @@ import {useState} from 'react'
 
 const CompanysItem = () => {
   const [like, setLike] = useState(false);
-
   return (
     <CompanyItemBox>
       <CompanyFlexBox>
         <CompanyLink to={'/exploring'}>
           <CompanyItemHeader>
-            <LikeBtnBox  onClick={() => setLike(!like)} style={{color:`${like ? 'red' : 'blue'}`}}>
+            <LikeBtn  onClick={() => console.log('test')} style={{color:`${like ? 'red' : '#fff'}`}}>
               <AiTwotoneHeart className={'btnIcon'}/>0
-            </LikeBtnBox>
+            </LikeBtn>
           </CompanyItemHeader>
           <CompanyItemFooter>
             <CompanyTitle>네이티브 모듈 개발 (React Native - iOS, Android)</CompanyTitle>
@@ -38,6 +37,7 @@ const CompanyItemBox = styled.li`
   list-style: none;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 `
 const CompanyFlexBox = styled.div`
   width: 100%;
@@ -121,8 +121,10 @@ const ResponseRate = styled.div`
   border: 1px solid #00aead;
   color: #00aead;
 `
-const LikeBtnBox = styled.button`
-  z-index: 3;
+const LikeBtn = styled.button`
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  z-index: 2;
   flex-direction: row;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import DropDownMenuItem from './dropDownMenuItem'
-import {useEffect, useState} from 'react'
+import DropDownMenuItem from './dropDownMenuItem';
+import {useEffect, useState} from 'react';
+import LoginModal from './loginModal'
 
 export const menuTop = [
   {
@@ -61,6 +62,7 @@ const Header = ({ page }) => {
   const [fixed, setFixed] = useState(false);
   const [hover, setHover] = useState(false);
   const [scroll, setScroll] = useState(0);
+  const [loginModal, setLoginModal] = useState(false);
   const updateScroll = () => {
     setScroll(window.scrollY || document.documentElement.scrollTop);
   }
@@ -76,6 +78,13 @@ const Header = ({ page }) => {
   }
 
     return (
+      <>
+        {loginModal ? <>
+          <LoginModal />
+          <ModalBackground
+          onClick={() => setLoginModal(!loginModal)}
+          />
+          </> : null}
       <Headers>
         <HeaderBox className={fixed ? 'fixed' : null}>
           <HeaderCenterBox>
@@ -100,7 +109,7 @@ const Header = ({ page }) => {
                 </UserText>
               </SearchBox>
               <UserBox>
-                <UserText>회원가입/로그인</UserText>
+                <UserText onClick={() => setLoginModal(!loginModal)}>회원가입/로그인</UserText>
               </UserBox>
               <Line />
               <CompanyBox>
@@ -109,9 +118,11 @@ const Header = ({ page }) => {
             </FlexRightBox>
           </HeaderCenterBox>
         </HeaderBox>
-        <DropDownMenuBox onMouseOver={() => mouseOver()} onMouseOut={() => mouseOut()}
-                         style={{height:`${hover ? '620px' : '0'}`}}
-                         className={fixed ? 'drop' : null}
+        <DropDownMenuBox
+          onMouseOver={() => mouseOver()}
+          onMouseOut={() => mouseOut()}
+          style={{height:`${hover ? '620px' : '0'}`}}
+          className={fixed ? 'drop' : null}
         >
           <DropDownMenu>
             <MenuListBox>
@@ -128,6 +139,7 @@ const Header = ({ page }) => {
         </DropDownMenuBox>
         <Modal style={{display:`${hover ? 'block' : 'none'}`}}/>
       </Headers>
+      </>
     )
 }
 
@@ -138,13 +150,13 @@ const Headers = styled.div`
   align-items: center;
   width: 100%;
   & .fixed{
-    z-index: 9999;
+    z-index: 2000;
     position: fixed;
     top: 0px;
   }
   &  .drop{
     position: fixed;
-    z-index: 9999;
+    z-index: 2000;
   }
 `
 const HeaderBox = styled.div`
@@ -281,6 +293,16 @@ const Modal = styled.div`
   background: rgba(0,0,0,.4);
   transition: .5s;
 `
-
+export const ModalBackground = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 4000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+`
 
 export default Header
