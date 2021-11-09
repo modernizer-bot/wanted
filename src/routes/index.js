@@ -4,6 +4,7 @@ import HomePage from "../pages/home"
 import LoginPage from "../pages/login"
 import NoMatchPage from "../pages/noMatch"
 import Exploring from '../pages/exploring/exploring'
+import DetailsCompany from '../pages/exploring/detailsCompany'
 
 
 const RootRoute = () => {
@@ -19,6 +20,7 @@ const RootRoute = () => {
                 <Route path='/home' component={HomePage} exact key="home" />
                 <Route path='/login' component={LoginPage} exact key="loign" />
                 <Route path='/exploring' component={Exploring} exact key='exploring'/>
+                <Route path='/detailsCompany' component={DetailsCompany} exact key='detailsCompany'/>
                 {/* 경로가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} key="noMatch" />
 

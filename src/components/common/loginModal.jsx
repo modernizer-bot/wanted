@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import {HiOutlineMail} from 'react-icons/hi';
+import {Link} from 'react-router-dom'
+import {VscChromeClose} from 'react-icons/vsc'
 
 const LoginModal = () => {
   return (
     <LoginBox>
-      <LoginLogo>wanted</LoginLogo>
+      <LoginLogo>wanted<VscChromeClose/></LoginLogo>
       <LoginFormBox>
         <LoginTextBox>
           <LoginTitle>직장인을 위한 <br/>커리어 플랫폼, 원티드!</LoginTitle>
@@ -22,23 +24,23 @@ const LoginModal = () => {
           <NextText>다음 계정으로 계속하기</NextText>
           <IconsBox>
             <IconBox>
-              <Icon type="button" style={{backgroundColor: '#fee500'}}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21">
+              <Icon type="button" className='kakao' >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21" >
                   <path d="M11 0C5.242 0 0 3.823 0 8.539c0 2.932 1.904 5.519 4.804 7.056l-1.22 4.479c-.107.397.343.712.69.483l5.348-3.548c.452.044.91.069 1.377.069 6.076 0 11-3.823 11-8.54 0-4.715-4.924-8.538-11-8.538" />
                 </svg>
-                <IconText>Kakao</IconText>
               </Icon>
+              <IconText>Kakao</IconText>
             </IconBox>
             <IconBox>
-                <Icon type="button" style={{backgroundColor: '#1877f2'}}>
+                <Icon type="button" className='faceBook' >
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="23" viewBox="0 0 12 23">
                     <path d="M11.214 12.603l.622-4.055h-3.89V5.917c0-1.11.543-2.191 2.285-2.191H12V.274S10.395 0 8.86 0C5.656 0 3.562 1.942 3.562 5.458v3.09H0v4.055h3.562v9.802c.714.112 1.446.17 2.191.17.746 0 1.478-.058 2.192-.17v-9.802h3.269" />
                   </svg>
-                  <div className="_2H7rBGiH8dNXI1n3m0f2yS isKR">Facebook</div>
                 </Icon>
+              <IconText>Facebook</IconText>
             </IconBox>
             <IconBox>
-                <Icon type="button">
+                <Icon type="button" className='google'>
                   <svg width="23" height="23" viewBox="0 0 23 23">
                     <g fill="none" fill-rule="nonzero">
                       <path fill="#EA4335"
@@ -52,19 +54,23 @@ const LoginModal = () => {
                       <path d="M0 0L23 0 23 23 0 23z"></path>
                     </g>
                   </svg>
-                  <div className="_2H7rBGiH8dNXI1n3m0f2yS isKR">Google</div>
                 </Icon>
+              <IconText>Google</IconText>
             </IconBox>
             <IconBox>
-                <Icon type="button">
+                <Icon type="button" className='apple'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24">
                     <path fill="#fff" fill-rule="nonzero"
                           d="M15.868 12.55c.033 3.574 3.098 4.764 3.132 4.779-.026.084-.49 1.695-1.615 3.36-.972 1.439-1.982 2.872-3.572 2.902-1.562.03-2.065-.938-3.851-.938s-2.344.908-3.823.967c-1.535.059-2.704-1.556-3.684-2.99C.45 17.698-1.08 12.343.975 8.73c1.022-1.795 2.848-2.932 4.83-2.96 1.506-.03 2.929 1.026 3.85 1.026.921 0 2.65-1.27 4.467-1.083.761.032 2.897.31 4.268 2.343-.11.07-2.548 1.506-2.522 4.494m-2.936-8.777c.815-.999 1.363-2.389 1.213-3.772-1.174.048-2.594.792-3.437 1.79-.755.884-1.416 2.298-1.238 3.654 1.31.103 2.647-.673 3.462-1.672"></path>
                   </svg>
-                  <div className="_2H7rBGiH8dNXI1n3m0f2yS isKR">Apple</div>
                 </Icon>
+              <IconText>Apple</IconText>
             </IconBox>
           </IconsBox>
+          <LoginFooterTextBox>
+            걱정마세요! 여러분의 지원 활동은 SNS에 노출되지 않습니다.<br/>
+            회원가입 시 <Link to={'/'}>개인정보 처리방침</Link>과 <Link to={'/'}>이용약관</Link>을 확인하였으며, 동의합니다.
+          </LoginFooterTextBox>
         </EmailFormBox>
       </LoginFormBox>
     </LoginBox>
@@ -89,15 +95,21 @@ const LoginBox = styled.div`
   transform: translate(-50%,-50%);
 `
 const LoginLogo = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   height: 54px;
   padding: 16px 20px;
   position: relative;
-  border-bottom: 1px solid #eee;
   color: #333;
   text-align: center;
   font-size: 20px;
   font-weight: 800;
   word-wrap: break-word;
+  & svg{
+    position: relative;
+    left: 140px;
+  }
 `
 const LoginFormBox = styled.div`
   width: 100%;
@@ -197,7 +209,7 @@ const NextText = styled.div`
 const IconsBox = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 84px;
@@ -205,9 +217,29 @@ const IconsBox = styled.div`
 `
 const IconBox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  & .kakao{
+    background-color: #fee500;
+  }
+  & .faceBook{
+    background-color: #1877f2;
+    svg{
+      fill: rgb(255, 255, 255);
+    }
+  }
+  & .google{
+    border: 1px solid #e1e2e3;
+    background-color: #fff;
+  }
+  & .apple{
+    background-color: #000;
+    & svg{
+      
+    }
+  }
 `
 const Icon = styled.button`
   width: 56px;
@@ -216,7 +248,29 @@ const Icon = styled.button`
   color: #737373;
   border-radius: 28px;
   border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 const IconText = styled.div`
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  text-align: center;
 `
+
+const LoginFooterTextBox = styled.div`
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  color: #999;
+  & a{
+    color: #3336ff;
+    text-decoration: underline;
+  }
+`
+
 export default LoginModal;
