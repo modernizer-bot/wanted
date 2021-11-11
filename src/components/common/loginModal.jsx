@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {HiOutlineMail} from 'react-icons/hi';
 import {Link} from 'react-router-dom'
 import {VscChromeClose} from 'react-icons/vsc'
+import KakaoLoginBtn from './kakaoLoginBtn'
 
 const LoginModal = () => {
   return (
@@ -70,6 +71,7 @@ const LoginModal = () => {
           <LoginFooterTextBox>
             걱정마세요! 여러분의 지원 활동은 SNS에 노출되지 않습니다.<br/>
             회원가입 시 <Link to={'/'}>개인정보 처리방침</Link>과 <Link to={'/'}>이용약관</Link>을 확인하였으며, 동의합니다.
+            <KakaoLoginBtn />
           </LoginFooterTextBox>
         </EmailFormBox>
       </LoginFormBox>
