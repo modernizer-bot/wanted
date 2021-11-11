@@ -6,6 +6,7 @@ import {RiBookmarkLine} from 'react-icons/ri'
 import {AiTwotoneHeart} from 'react-icons/ai'
 import {BsShare} from 'react-icons/bs'
 import {MdOutlineArrowBackIos,MdOutlineArrowForwardIos} from 'react-icons/md';
+import KakaoMap from '../../components/common/kakaoMap'
 
 
 
@@ -92,8 +93,12 @@ const DetailsCompany = () => {
               <MapTextBox>
                 <MapTitle>근무지역</MapTitle>
                 <MapText>강남구 테헤란로 427, 위워크 타워 7층 101호</MapText>
+                <MapImgBox>
+                  <MapImg src={'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=700&amp;h=254&amp;markers=type:d|size:mid|pos:127.0536603 37.5063712|color:red&amp;scale=2&amp;X-NCP-APIGW-API-KEY-ID=z7e7ujba1u'}/>
+                </MapImgBox>
               </MapTextBox>
             </MapSectionBox>
+            <KakaoMap />
           </SectionLeft>
           <SectionRight>
             <Navigation>
@@ -462,7 +467,11 @@ const MapText = styled.div`
   font-weight: 600;
   color: #333;
 `
-
+const MapImgBox = styled.div`
+  width: 100%;
+`
+const MapImg = styled.img`
+`
 export default DetailsCompany;
 
 

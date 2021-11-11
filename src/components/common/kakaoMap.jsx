@@ -1,28 +1,31 @@
+import styled from 'styled-components';
+import {useEffect} from 'react'
+/*global kakao*/
+
 // f9b256f27ac94c60b3b60548d768b661
 
-import {useEffect} from 'react';
-
-const {Kakao} = window;
 
 const KakaoMap = () => {
-  useEffect(() => {
+  useEffect(()=>{
     let container = document.getElementById('map');
-    let options ={
-      center: new window.kakao.maps.LatLng(35.85133, 127.734086),
-      level: 13,
+    let options = {
+      center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
+      level: 3
     };
-    let map = new window.kakao.maps.Map(container,options);
-
-    console.log('Loading kakaoMap');
-  },[]);
+    let map = new kakao.maps.Map(container, options);
+  }, [])
 
 
   return (
-    <div className="Map">
-      <div className="MapContainer" id="map">
-      </div>
+    <div>
+      <MapBox id="map"></MapBox>
     </div>
-  );
+  )
 }
+
+const MapBox = styled.div`
+  width: 100%;
+  height: 254px;
+`
 
 export default KakaoMap;

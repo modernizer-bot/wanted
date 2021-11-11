@@ -34,3 +34,4 @@
   + 회사 소개 API 사용
   + google Map 유료 서비스라 사용불가로 kakao Map 적용시도
 + 2021.11.11
+  + 회사 상세페이지 kakao map API 적용(위치는 임시로 적용) 
