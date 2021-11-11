@@ -8,7 +8,7 @@ const CompanysItem = () => {
   return (
     <CompanyItemBox>
       <CompanyFlexBox>
-        <CompanyLink to={'/exploring'}>
+        <CompanyLink to={'/detailsCompany'}>
           <CompanyItemHeader>
             <LikeBtn  onClick={() => console.log('test')} style={{color:`${like ? 'red' : '#fff'}`}}>
               <AiTwotoneHeart className={'btnIcon'}/>0
@@ -83,7 +83,7 @@ const CompanyText = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `
-const CompanySubText = styled.div`
+export const CompanySubText = styled.div`
   font-size: 14px;
   line-height: 1.6;
   text-align: left;
@@ -108,7 +108,7 @@ const CompanyMoney = styled.div`
 `
 const ResponseRateBox = styled.div`
 `
-const ResponseRate = styled.div`
+export const ResponseRate = styled.div`
   border-radius: 2px;
   background-color: #fff;
   display: inline-block;

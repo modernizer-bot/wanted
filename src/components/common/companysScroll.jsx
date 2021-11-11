@@ -8,18 +8,15 @@ const CompanysScroll = () => {
     <ScrollBox>
       <ScrollTitle>전체</ScrollTitle>
       <ScrollFlexBox>
-        <ScrollItemBox>
-          <ScrollItem></ScrollItem>
-        </ScrollItemBox>
+
       </ScrollFlexBox>
     </ScrollBox>
   );
 }
 
-
-export default CompanysScroll;
 const ScrollBox = styled(PageWrap)`
   max-width: 1060px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,9 +33,11 @@ const ScrollTitle = styled.div`
   text-align: left;
 `
 const ScrollFlexBox = styled.div`
+  width: 100%;
   margin-bottom: 20px;
 `
-const ScrollItemBox = styled.ul`
-`
-const ScrollItem = styled.li`
-`
+
+
+
+export default CompanysScroll;
+

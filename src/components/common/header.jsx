@@ -293,6 +293,7 @@ const Modal = styled.div`
   background: rgba(0,0,0,.4);
   transition: .5s;
 `
+
 export const ModalBackground = styled.div`
   display: flex;
   flex-direction: row;
