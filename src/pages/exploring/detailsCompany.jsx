@@ -7,16 +7,28 @@ import {AiTwotoneHeart} from 'react-icons/ai'
 import {BsShare} from 'react-icons/bs'
 import {MdOutlineArrowBackIos,MdOutlineArrowForwardIos} from 'react-icons/md';
 import KakaoMap from '../../components/common/kakaoMap'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 
 
 const DetailsCompany = () => {
+  const [datas, setDatas] = useState(null)
+
+  useEffect(async () => {
+    await axios.get('https://prod.wantedb.shop/positions/1').then(res => setDatas(res.data.result));
+    console.log(datas);
+  }, []);
+
+
   const onClick = () => {
     const move = document.getElementById('moveImg');
-    console.log(move);
     // transform: translate(-100%);
     move.style.transform='translate(-50%)';
   }
+  //{datas !== null ? datas.tag.map( (v,i) =>
+  //                   <Tages key={i}>#{v}</Tages>
+  //                 ): null}
   return (
     <Page>
       <Header />
@@ -45,60 +57,39 @@ const DetailsCompany = () => {
               <CompanyTextBox>
                 <CompanyText>서클 플랫폼</CompanyText>
                 <ResponseRate style={{marginLeft:'10px'}}>응답률 매우 높음</ResponseRate>
-                <CompanySubText style={{marginLeft:'10px'}}>서울·한국</CompanySubText>
+                <CompanySubText style={{marginLeft:'10px'}}>{datas.주소}</CompanySubText>
               </CompanyTextBox>
               <TagesBox>
-                <Tages>#스톡옵션</Tages>
-                <Tages>#스타트업</Tages>
-                <Tages>#커피</Tages>
-                <Tages>#간식</Tages>
-                <Tages>#IT.컨텐츠</Tages>
+
               </TagesBox>
             </SectionTitleBox>
             <CompanyDetail>
-              서클플랫폼은 데이터 기반의 플랫폼 비즈니스를 하고 있는 스타트업 입니다. <br/><br/>
-              데이터를 많이 이야기 하지만 실제 비즈니스로 연결되는 프러덕은 찾아보기 어렵습니다.<br/><br/>
-              저희는 데이터를 비즈니스로 연결하는데 많은 관심을 가지고 있습니다.<br/><br/>
-              주요업무<br/><br/>
-              서비스 비전 정의 및 전략 로드맵 설계<br/><br/>
-              서비스 요구사항 정의, 서비스 기획, 백로그 우선순위 관리<br/><br/>
-              서비스 개선 기획, 개발 협업 프로세스 진행<br/><br/>
-              데이터에 기반한 컨텐츠 설계<br/><br/>
-              온라인 셀러를 위한 서비스 설계<br/><br/>
-              플랫폼 비즈니스 설계<br/><br/>
-              자격요건<br/><br/>
-              고객 중심, 데이터 중심의 사고를 바탕으로 문제 해결 능력을 갖춘분<br/><br/>
-              o2o, 데이터 비즈니스 기획을 경험하신분<br/><br/>
-              기술적인 제약을 이해하고 결정 시점의 합리적 의사결정 및 문제 해결 능력을 갖추신 분<br/><br/>
-              2년 이상의 서비스 기획, 프로덕트 오너 실무 경험이 있으신 분<br/><br/>
-              우대사항<br/><br/>
-              o2o 및 데이터 서비스 기획 및 PO 경력<br/><br/>
-              애자일 방식의 스프린트 진행으로 빠르고 유연한 프로젝트 리딩 경험<br/><br/>
-              테스트를 통한 사용자 중심의 Product 개선 경험<br/><br/>
-              Slack, Jira, Confluence 사용 경험<br/><br/>
-              혜택 및 복지<br/>
-              - 자율출퇴근제<br/>
-              - 스톡옵션<br/>
-              - 사이닝 보너스<br/>
-              - 맛있는 간식 및 커피 무한 제공<br/>
-              - 최신형 장비 지원. 맥북프로, 윈도우 중 선택<br/>
-              - 업무연관 도서구입/세미나/온오프라인 강의수강 지원<br/>
+              {datas.소개}
             </CompanyDetail>
             <hr style={{borderTop: '1px solid #eee'}}/>
             <MapSectionBox>
               <MapTextBox>
                 <MapTitle>마감일</MapTitle>
-                <MapText>상시</MapText>
+                <MapText>{datas.마감기한}</MapText>
               </MapTextBox>
               <MapTextBox>
                 <MapTitle>근무지역</MapTitle>
                 <MapText>강남구 테헤란로 427, 위워크 타워 7층 101호</MapText>
-                <MapImgBox>
-                  <MapImg src={'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=700&amp;h=254&amp;markers=type:d|size:mid|pos:127.0536603 37.5063712|color:red&amp;scale=2&amp;X-NCP-APIGW-API-KEY-ID=z7e7ujba1u'}/>
-                </MapImgBox>
               </MapTextBox>
             </MapSectionBox>
             <KakaoMap />
+            <FollowBox>
+              <FollowContainer>
+                <FollowImgBox>
+                  <FollowImg />
+                  <FollowTextBox>
+                    <FollowTitle>에일리언오더즈</FollowTitle>
+                    <FollowText>제조</FollowText>
+                  </FollowTextBox>
+                </FollowImgBox>
+                <FollowBtn>팔로우</FollowBtn>
+              </FollowContainer>
+            </FollowBox>
           </SectionLeft>
           <SectionRight>
             <Navigation>
@@ -131,22 +122,35 @@ const DetailsCompany = () => {
           </SectionRight>
         </MainSectionBox>
       </PageMarginBox>
+      <CompanysListBox>
+        <CompanysTitle>User님, 이 포지션을 찾고 계셨나요?</CompanysTitle>
+        <CompanysList>
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+          <CompanysItem />
+        </CompanysList>
+      </CompanysListBox>
       <Footer />
     </Page>
   );
 }
-//<CompanysListBox>
-//         <CompanysList>
-//           <CompanysItem />
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//           <CompanysItem></CompanysItem>
-//         </CompanysList>
-//       </CompanysListBox>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,7 +163,7 @@ const DetailsCompany = () => {
 
 const Page =styled.div`
   width: 100%;
-  height: 150vw;
+  height: 170vw;
 `
 
 const PageMarginBox = styled.div`
@@ -179,7 +183,6 @@ const MainSectionBox = styled.div`
 `
 const SectionLeft = styled.div`
   width: calc(100% - 360px);
-  height: 100%;
 `
 const SectionRight = styled.div`
   display: flex;
@@ -273,6 +276,16 @@ const CompanysListBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+const CompanysTitle =styled.div`
+  max-width: 1060px;
+  width: 100%;
+  text-align: left;
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  line-height: normal;
 `
 const CompanysList = styled.div`
   width: 100%;
@@ -458,7 +471,7 @@ const MapTextBox = styled.div`
 `
 const MapTitle = styled.div`
   color: #999;
-  width: 80px;
+  width: 90px;
   font-size: 16px;
   font-weight: 600;
 `
@@ -467,11 +480,66 @@ const MapText = styled.div`
   font-weight: 600;
   color: #333;
 `
-const MapImgBox = styled.div`
+
+const FollowBox = styled.div`
   width: 100%;
+  
 `
-const MapImg = styled.img`
+const FollowContainer = styled.div`
+  margin: 80px 0 0;
+  max-width: 1060px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #e1e2e3;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `
+const FollowTextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const FollowTitle = styled.div`
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+  color: #333;
+  margin: 0 0 5px;
+  word-break: break-word;
+`
+const FollowText = styled.div`
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+  color: #999;
+  margin: 0;
+`
+const FollowImgBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+const FollowImg = styled.div`
+  background: url("https://static.wanted.co.kr/images/wdes/0_5.4e274332.jpg") 50%;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+`
+const FollowBtn = styled.button`
+  border-radius: 3px;
+  background: #258bf7;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 30px;
+  white-space: nowrap;
+  border: none;
+`
+
+
 export default DetailsCompany;
 
 

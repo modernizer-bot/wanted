@@ -34,4 +34,6 @@
   + 회사 소개 API 사용
   + google Map 유료 서비스라 사용불가로 kakao Map 적용시도
 + 2021.11.11
-  + 회사 상세페이지 kakao map API 적용(위치는 임시로 적용) 
+  + 회사 상세페이지 kakao map API 적용(위치는 임시로 지정)
+  + Kakao Login Btn 구현(이미지 사이즈 안맞음)
+  + 회사 상세페이지 API 적용(내용, 마감일, 태그)
