@@ -3,8 +3,9 @@ import {Link} from 'react-router-dom'
 import {AiTwotoneHeart} from 'react-icons/ai';
 import {useState} from 'react'
 
-const CompanysItem = () => {
+const CompanysItem = ({props}) => {
   const [like, setLike] = useState(false);
+  console.log(props)
   return (
     <CompanyItemBox>
       <CompanyFlexBox>
@@ -15,14 +16,14 @@ const CompanysItem = () => {
             </LikeBtn>
           </CompanyItemHeader>
           <CompanyItemFooter>
-            <CompanyTitle>네이티브 모듈 개발 (React Native - iOS, Android)</CompanyTitle>
-            <CompanyText>키클롭스</CompanyText>
+            <CompanyTitle>{props.포지션이름}</CompanyTitle>
+            <CompanyText>{props.회사이름}</CompanyText>
             <ResponseRateBox>
               <ResponseRate>
                 응답률 메우높음
               </ResponseRate>
             </ResponseRateBox>
-            <CompanySubText>서울·한국</CompanySubText>
+            <CompanySubText>{props.주소}</CompanySubText>
             <CompanyMoney>채용보상금 1,000,000원</CompanyMoney>
           </CompanyItemFooter>
         </CompanyLink>

@@ -1,18 +1,24 @@
 import styled from 'styled-components';
 import {PageWrap} from '../../components/common/styled'
 import Header from '../../components/common/header'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {FaBookmark} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import Recommendations from '../../components/common/recommendations'
 import CompanysItem from '../../components/common/companysItem'
 import CompanysScroll from '../../components/common/companysScroll'
+import axios from 'axios'
 
 const Exploring = () => {
   const [toggle, setToggle] = useState(false);
   const onClick = () => {
     setToggle(!toggle);
   }
+
+  const [datas, setDatas] = useState(null);
+  useEffect(() => {
+    axios.get('https://prod.wantedb.shop/positions').then(res => setDatas(res.data.result));
+  },[])
   const recommendation = [
     {
       img:'https://static.wanted.co.kr/images/company/455/mnes3mjmx4m7jmhk__1080_790.jpg',
@@ -84,8 +90,8 @@ const Exploring = () => {
           </RecommendationBox>
         </CompanyListCenter>
         <CompanyBox>
-          {count.map((v,i) =>
-            <CompanysItem key={i}/>
+          {datas && datas.map((v,i) =>
+            <CompanysItem key={i} props={v}/>
           )}
         </CompanyBox>
       </CompanyListBox>
