@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import {PageWrap } from "../components/common/styled";
-import Header from "../components/common/header";
-import Footer from '../components/common/footer'
-import MainPage from './home/mainPage'
+import {PageWrap } from "../components/common/styled.jsx";
+import Header from "../components/common/header.jsx";
+import Footer from '../components/common/footer.jsx'
+import MainPage from './home/mainPage.jsx'
 
 
 const IndexPage = () => {

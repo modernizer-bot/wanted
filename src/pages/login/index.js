@@ -1,9 +1,9 @@
-import { PageWrap } from "../../components/common/styled"
-import Header from "../../components/common/header"
+import { PageWrap } from "../../components/common/styled.jsx"
+import Header from "../../components/common/header.jsx"
 import styled from "styled-components"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
-import { loginAction } from "../../store/actions/login"
+import { loginAction } from "../../store/actions/login.js"
 import { useDispatch } from "react-redux"
 
 const LoginPage = () => {

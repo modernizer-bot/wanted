@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import IndexPage from "../pages"
-import HomePage from "../pages/home"
-import LoginPage from "../pages/login"
-import NoMatchPage from "../pages/noMatch"
-import Exploring from '../pages/exploring/exploring'
-import DetailsCompany from '../pages/exploring/detailsCompany'
+import IndexPage from "../pages.js"
+import HomePage from "../pages/home.js"
+import LoginPage from "../pages/login.js"
+import NoMatchPage from "../pages/noMatch.js"
+import Exploring from '../pages/exploring/exploring.jsx'
+import DetailsCompany from '../pages/exploring/detailsCompany.jsx'
 
 
 const RootRoute = () => {
