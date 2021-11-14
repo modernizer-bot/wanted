@@ -80,7 +80,7 @@ const Header = ({ page }) => {
     return (
       <>
         {loginModal ? <>
-          <LoginModal />
+          <LoginModal props={{setLoginModal, loginModal}}/>
           <ModalBackground
           onClick={() => setLoginModal(!loginModal)}
           />

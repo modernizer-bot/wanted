@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 class KakaoLoginBtn extends Component {
   componentDidMount() {
-    let movePage = false;
     const apiKey = 'f9b256f27ac94c60b3b60548d768b661';
     const kakaoScript = document.createElement("script");
     kakaoScript.src = 'https://developers.kakao.com/sdk/js/kakao.js';

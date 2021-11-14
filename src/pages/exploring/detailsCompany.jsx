@@ -8,16 +8,15 @@ import {BsShare} from 'react-icons/bs'
 import {MdOutlineArrowBackIos,MdOutlineArrowForwardIos} from 'react-icons/md';
 import KakaoMap from '../../components/common/kakaoMap'
 import {useEffect, useState} from 'react'
-import axios from 'axios'
 
 
 
 const DetailsCompany = () => {
   const [datas, setDatas] = useState(null)
-
-  useEffect(async () => {
-    await axios.get('https://prod.wantedb.shop/positions/1').then(res => setDatas(res.data.result));
+  const [usbDatas,setSubDatas] = useState(null)
+  useEffect( () => {
     console.log(datas);
+    //const tages =
   }, []);
 
 
@@ -28,7 +27,7 @@ const DetailsCompany = () => {
   }
   //{datas !== null ? datas.tag.map( (v,i) =>
   //                   <Tages key={i}>#{v}</Tages>
-  //                 ): null}
+  //                 ): null}y
   return (
     <Page>
       <Header />
@@ -57,20 +56,20 @@ const DetailsCompany = () => {
               <CompanyTextBox>
                 <CompanyText>서클 플랫폼</CompanyText>
                 <ResponseRate style={{marginLeft:'10px'}}>응답률 매우 높음</ResponseRate>
-                <CompanySubText style={{marginLeft:'10px'}}>{datas.주소}</CompanySubText>
+                <CompanySubText style={{marginLeft:'10px'}}>{datas ? datas.주소 : 'datas.주소'}</CompanySubText>
               </CompanyTextBox>
               <TagesBox>
 
               </TagesBox>
             </SectionTitleBox>
             <CompanyDetail>
-              {datas.소개}
+              {datas ? datas.소개 : 'datas.소개'}
             </CompanyDetail>
             <hr style={{borderTop: '1px solid #eee'}}/>
             <MapSectionBox>
               <MapTextBox>
                 <MapTitle>마감일</MapTitle>
-                <MapText>{datas.마감기한}</MapText>
+                <MapText>{datas ? datas.마감기한 : 'datas.마감기한'}</MapText>
               </MapTextBox>
               <MapTextBox>
                 <MapTitle>근무지역</MapTitle>
@@ -123,16 +122,11 @@ const DetailsCompany = () => {
         </MainSectionBox>
       </PageMarginBox>
       <CompanysListBox>
-        <CompanysTitle>User님, 이 포지션을 찾고 계셨나요?</CompanysTitle>
         <CompanysList>
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
-          <CompanysItem />
+        <CompanysTitle>User님, 이 포지션을 찾고 계셨나요?</CompanysTitle>
+        {usbDatas && usbDatas.map((v,i) =>
+          <CompanysItem key={i} props={v}/>
+        )}
         </CompanysList>
       </CompanysListBox>
       <Footer />
@@ -140,7 +134,7 @@ const DetailsCompany = () => {
   );
 }
 
-
+//
 
 
 

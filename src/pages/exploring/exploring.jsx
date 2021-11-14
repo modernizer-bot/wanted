@@ -17,7 +17,7 @@ const Exploring = () => {
 
   const [datas, setDatas] = useState(null);
   useEffect(() => {
-    axios.get('https://prod.wantedb.shop/positions').then(res => setDatas(res.data.result));
+    // axios.get('https://prod.wantedb.shop/positions').then(res => setDatas(res.data.result));
   },[])
   const recommendation = [
     {
@@ -47,7 +47,6 @@ const Exploring = () => {
       text:'19개 포지션'
     },
   ]
-  const count = [1,2,3,4,5,6,7,8,9];
 
   return (
     <PageWrap>

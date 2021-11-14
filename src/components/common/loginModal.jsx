@@ -3,11 +3,17 @@ import {HiOutlineMail} from 'react-icons/hi';
 import {Link} from 'react-router-dom'
 import {VscChromeClose} from 'react-icons/vsc'
 import KakaoLoginBtn from './kakaoLoginBtn'
+import {useState} from 'react'
 
-const LoginModal = () => {
+const LoginModal = ({props}) => {
+  console.log(props);
+  const [moader, setMoader] = useState(false);
+  const onclick = () => {
+
+  }
   return (
     <LoginBox>
-      <LoginLogo>wanted<VscChromeClose/></LoginLogo>
+      <LoginLogo>wanted<VscChromeClose onClick={() => setMoader(!moader)}/></LoginLogo>
       <LoginFormBox>
         <LoginTextBox>
           <LoginTitle>직장인을 위한 <br/>커리어 플랫폼, 원티드!</LoginTitle>
